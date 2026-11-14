@@ -1,0 +1,32 @@
+{
+  "name": "partner-eval-tracker",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "vite",
+    "dev:server": "node --watch server/index.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "npm run build && node server/index.js",
+    "test": "vitest run",
+    "admin:create": "node server/create-admin.js",
+    "admin:password": "node server/set-admin-password.js",
+    "backup": "node server/backup.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.5",
+    "@fastify/rate-limit": "^11.2.2",
+    "@fastify/static": "^10.1.11",
+    "better-sqlite3": "^13.2.0",
+    "chart.js": "^4.4.7",
+    "dotenv": "^18.0.10",
+    "fastify": "^5.12.8"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7",
+    "vite": "^6.0.7",
+    "vitest": "^5.1.0"
+  }
+}
